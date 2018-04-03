@@ -1,0 +1,8 @@
+<h5>Post Number</h5>
+<%= @posting.id %>
+<h5>Description <%= @posting.name %></h5>
+<h5>Email <%= @posting.user.email %></h5>
+<%= button_to "I can help!", "/postings/#{@posting.id}/agreement/new" %>
+
+
+

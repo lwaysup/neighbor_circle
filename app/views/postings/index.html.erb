@@ -1,0 +1,22 @@
+<%= @postings.each do |post| %>
+    <table id="all_postings">
+        <thead>
+            <tr>
+                <th>Post Number</th>
+                <th>Description</th>
+                <th>Email</th>
+                <th>Agree</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= post.id %></td>
+                <td><%= post.name %></td>
+                <td><%= post.user.email</td>
+                <td><%= button_to "I can help!", "/postings/#{post.id}/agreement/new" %></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+<% end %>

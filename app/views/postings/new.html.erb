@@ -1,0 +1,4 @@
+<%= form_for @posting, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "New Posting" %>
+<% end %>
