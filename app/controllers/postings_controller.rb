@@ -19,7 +19,8 @@ class PostingsController < ApplicationController
     end
     
     def show
-        @posting = Posting.find(params[:id])
+       # @posting = Posting.find(params[:id])
+       @postings = Posting.where(user_id: current_user.id)
     end
     def destroy
         @posting = Posting.find(params[:id])

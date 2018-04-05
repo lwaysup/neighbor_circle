@@ -1,0 +1,26 @@
+<% if @agreements.length > 0 %>
+    <h6>These are your agreements:</h6>
+      <table id="agreement_table">
+          <thead>
+              <tr>
+                  <th>Original Poster</th>
+                  <th>Task Description</th>
+                  <th>Responder's Email</th>
+                  <th>Service Rendered</th>
+              </tr>
+          </thead>
+          <Tbody>
+              <% @agreements.each do |one_agreement| %>
+                  <tr>
+                      <td><%= one_agreement.poster.email %></td>
+                      <td><%= one_agreement.posting.name %></td>
+                      <td><%= one_agreement.user.email %></td>
+                      <td><%= button_to "Service Rendered!", {:controller => 'agreements', :action => 'update', :method => :put, :id => one_agreement.id, :agree => {posting_id: one_agreement.posting.id} }, {:disabled => one_agreement.service_rendered?, method: :put}  %></td>
+                  </tr>
+              <% end %>
+          </Tbody>
+      </table>
+      
+<% else %>
+    <p>You don't have any agreements.</p>
+<% end %>

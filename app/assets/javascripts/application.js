@@ -16,3 +16,5 @@
 //= require jquery
 //= require popper
 //= require bootstrap
+@import "*";
+@import "bootstrap";

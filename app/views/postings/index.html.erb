@@ -1,22 +1,24 @@
-<%= @postings.each do |post| %>
-    <table id="all_postings">
-        <thead>
-            <tr>
-                <th>Post Number</th>
-                <th>Description</th>
-                <th>Email</th>
-                <th>Agree</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= post.id %></td>
+<table id="all_postings">
+     <thead>
+        <tr>
+            <th scope="col">Post Number</th>
+            <th scope="col">Description  </th>
+            <th scope="col">Email  </th>
+            <th scope="col">Agree</th>
+        </tr>
+    </thead>   
+    <tbody>
+   
+<% @postings.each do |post| %>
+        <tr>
+            <th scope="row"><%= post.id %></th>
+                
                 <td><%= post.name %></td>
-                <td><%= post.user.email</td>
-                <td><%= button_to "I can help!", "/postings/#{post.id}/agreement/new" %></td>
-            </tr>
-        </tbody>
-    </table>
-    
-
+                <td><%= post.user.email %></td>
+                <td><%= button_to "I can help!", {:controller => 'agreements', :action => 'create', :method => :post, :agree => { posting_id: post.id} }, {:disabled => post.responded_to?}  %></td>
+            </th>
+        </tr>
 <% end %>
+
+    </tbody>
+</table>

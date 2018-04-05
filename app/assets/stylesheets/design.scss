@@ -1,0 +1,99 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.top-page{
+    height: 5%;
+    background-color: #336E7B;
+    display: flex;
+    margin-bottom: 60px;
+    
+}
+.container {
+  width: 100%;
+  
+}
+ .navbar-nav{
+     display: flex;
+     flex-direction: row important;
+     padding-left: 25px;
+     padding-right: 20px;
+     width: 200px;
+     margin-bottom: 0;
+     list-style: none;
+     color: #ffffff;
+     height: 100%;
+     overflow: auto;
+     border: 3px solid #ffffff;
+     background-color: #ffffff;
+ }
+ .navbar-nav li{
+     color: #ffffff;
+     text-align: center;
+ }
+ .navbar-nav li a:hover:not(.active){
+     background-color: #013243;
+ }
+.row{
+    display: flex;
+    flex-direction: row important;
+    
+}
+    
+    
+.lines{
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    margin-top: 6%;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    border-width: 5px;
+}
+
+.flex{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.top-right{
+    display: flex;
+    flex-direction: row;
+}
+
+.top-right img{
+    width: 300px;
+    height: 300px;
+    margin-right: 0;
+}
+table tr:nth-child(even){
+    background: #336E7B;
+}
+table thead{
+    align: left;
+    font-size: 28px;
+    background-color: white;
+  }
+  table th{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+  }
+  table th, td{
+    padding: 10px;
+    
+  }
+  
+  .foot-separator{
+      width: 100%;
+      height: 2%;
+      background-color: #336E7B;
+      
+  }
+
+.foot-elements{
+    display: inline;
+}
