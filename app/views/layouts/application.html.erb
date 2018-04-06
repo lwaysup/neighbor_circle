@@ -6,11 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet"/>
   </head>
 
   <body>
@@ -26,42 +28,47 @@
                   <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
                   <li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link" %></li>
+                  <div class="nav-extra">
                   <% if user_signed_in? %>
-                        <% name = current_user.email.slice(0..current_user.email.chars.find_index("@")-1) %>
-                        <p id="user_name">Hello <%= name %>! </p>
+                        
                      
                      <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                      <li class="nav-item"><%= link_to "New Posting", new_posting_path %></li>
                      <li class="nav-item"><%= link_to "Posting List", postings_path %></li>
                      <li class="nav-item"><%= link_to "My Agreements", agreements_path %></li>
-                </ul>
+               
                   <% else %>
-                    <ul class="navbar-nav mr-auto float-right">
-                       <li class="btn btn-info  nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
+                    <div class="nav-extra">
+                       <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
                        <li class="nav-item"><%= link_to "Login", new_user_session_path %></li>
-                    </ul>
+                    
                   <% end %>
-                   
+                </div><!-- nava-extra -->
+               </ul>     
             </nav>    
           </div>
           
       
-          <%  flash.each do |name, message| %>
-            <%= content_tag(:div, message, class: "alert alert-info #{name}") %>
-          <% end %>
+         
       </div> <!-- col-3 -->
       <div class="col-6">
+        
         <div class="all_lines">
           <div class="lines"></div>
           <div class="lines"></div>
           <div class="lines"></div>
+          
         </div>
         
       </div>
       <div class="col-3">
         <aside class="top-right">
+          <% if user_signed_in? %>
+            <% name = current_user.email.slice(0..current_user.email.chars.find_index("@")-1) %>
+            <span class="hello">Hello <%= name %>! </span>
+        <% end %>
           <div class="col-md-12"></div>
-            <%= image_tag("active_people.png", :alt => "logo") %>
+           <!-- <%= image_tag("active_people3.png", :alt => "logo") %> -->
           </div>
       </aside>
         
@@ -72,6 +79,9 @@
      
   
       <div class="container">
+         <%  flash.each do |name, message| %>
+            <%= content_tag(:div, message, class: "alert alert-info #{name}") %>
+          <% end %>
         <div class="row justify-content-center">
          
           <div class-"col-8 justify-content-center flex">
@@ -83,11 +93,18 @@
           
         </div
       </div>
-  <footer>
-    <div class="foot-separator"></div>
-      <div class="foot-elements">
-        <p><%= link_to "Home", root_path, class: "nav-link" %>|<%= link_to "About", about_path, class: "nav-link" %>|<%= link_to "Contact", contact_path, class: "nav-link" %></p>
-      </div>
-  </footer>  
+      <footer class="footer">
+        <div class="foot-separator"></div>
+          <div class="foot-elements">
+            <ul>
+              
+              <li><%= link_to "Home", root_path, class: "nav-link" %></li>
+              <li><%= link_to "About", about_path, class: "nav-link" %></li>
+              <li><%= link_to "Contact", contact_path, class: "nav-link" %></li>
+              <li>&#169;NeighborCircle </li>
+            </ul>
+            
+          </div>
+      </footer>   
   </body>
 </html>
